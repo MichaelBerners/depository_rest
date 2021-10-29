@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+
 @RestControllerAdvice
 public class UsersControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-        public String notValid(MethodArgumentNotValidException e) {
+    public String notValid(MethodArgumentNotValidException e) {
         return "Not valid argument";
     }
 
@@ -19,5 +21,11 @@ public class UsersControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String notValid(EmptyResultDataAccessException e) {
         return "Такого пользователя не существует";
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String notValid(ConstraintViolationException e) {
+        return "id должен быть положительным числом";
     }
 }

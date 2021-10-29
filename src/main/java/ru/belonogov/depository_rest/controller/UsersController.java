@@ -7,6 +7,7 @@ import ru.belonogov.depository_rest.models.User;
 import ru.belonogov.depository_rest.service.UsersService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 @Validated
@@ -25,7 +26,7 @@ public class UsersController {
 
     //получить конкретного клиента по id
     @GetMapping("/{id}")
-    public User read(@PathVariable("id") int id) {
+    public User read(@PathVariable("id") @Positive int id) {
         return usersService.read(id);
     }
 
@@ -38,14 +39,14 @@ public class UsersController {
 
     //редактировать клиента
     @PutMapping("/{id}")
-    public void update(@RequestBody @Valid User user, @PathVariable("id") int id) {
+    public void update(@RequestBody @Valid User user, @PathVariable("id") @Positive int id) {
 
         usersService.update(user, id);
     }
 
     //удалить клиента по конкретному id
     @DeleteMapping("/{id}/delete")
-    public void delete(@PathVariable("id") int id) {
+    public void delete(@PathVariable("id") @Positive int id) {
         usersService.delete(id);
     }
 
