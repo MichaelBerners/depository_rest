@@ -21,7 +21,7 @@ public class UsersController {
     //получить список всех клиентов
     @GetMapping()
     public List<User> readAll() {
-        return  usersService.readAll();
+        return usersService.readAll();
     }
 
     //получить конкретного клиента по id

@@ -3,7 +3,8 @@ package ru.belonogov.depository_rest.models;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 //товары
 public class Goods {
 

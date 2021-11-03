@@ -23,19 +23,19 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public User read(int id) {
-        return jdbcTemplate.queryForObject("select * from users where id = ?" , new UsersMapper(), id);
+        return jdbcTemplate.queryForObject("select * from users where id = ?", new UsersMapper(), id);
     }
 
     @Override
     public List<User> readAll() {
 
-        return jdbcTemplate.query("select * from users where user_types_id = 1" , new UsersMapper());
+        return jdbcTemplate.query("select * from users where user_types_id = 1", new UsersMapper());
     }
 
     @Override
     public void update(User user, int id) {
         jdbcTemplate.update("UPDATE users SET last_name = ?, first_name = ?, patronymic = ?," +
-                "phone_number = ?, email = ?, password = ? WHERE id = ?", user.getLastName(),
+                        "phone_number = ?, email = ?, password = ? WHERE id = ?", user.getLastName(),
                 user.getFirstName(), user.getPatronymic(), user.getPhoneNumber(),
                 user.getEmail(), user.getPassword(), id);
     }

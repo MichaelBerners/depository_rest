@@ -11,9 +11,9 @@ import javax.sql.DataSource;
 @Component
 public class JdbcTemp implements CommandLineRunner {
 
-private DataSource dataSource;
+    private DataSource dataSource;
 
-private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public void run(String... args) throws Exception {

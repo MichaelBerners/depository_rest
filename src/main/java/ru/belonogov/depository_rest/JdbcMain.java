@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class JdbcMain {
     public static void main(String[] args) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/depository",
+        try (Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/depository",
                 "root", "123123321")) {
             /*try(PreparedStatement stmt = con.prepareStatement("insert into goods_types (type) values (?) ")) {
                 for (int i = 0; i < 100; i++){
@@ -27,7 +27,7 @@ public class JdbcMain {
                 }
             }*/
 
-            try(PreparedStatement stmt = con.prepareStatement("select * from users")){
+            try (PreparedStatement stmt = con.prepareStatement("select * from users")) {
 
                 ResultSet rs = stmt.executeQuery();
 
@@ -38,9 +38,7 @@ public class JdbcMain {
                 }
             }
 
-        }
-
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
